@@ -19,12 +19,17 @@ wheels/
 *.egg-info/
 .installed.cfg
 *.egg
+MANIFEST
 
 # Virtual environment
 venv/
 env/
 ENV/
 .env
+.venv/
+env.bak/
+venv.bak/
+translator-env/
 
 # IDE files
 .idea/
@@ -34,6 +39,7 @@ ENV/
 .project
 .pydevproject
 .settings/
+*.code-workspace
 
 # Office temp files
 ~$*.xlsx
@@ -49,6 +55,7 @@ ENV/
 *.rar
 *.7z
 *.tar.gz
+*.tar.bz2
 
 # Input/Output directories content
 # Keep the directories but ignore their contents
@@ -57,15 +64,52 @@ input/*
 output/*
 !output/.gitkeep
 
-# Log files
-*.log
-logs/
+# Test and build artifacts
+.coverage
+.pytest_cache/
+.tox/
+.nox/
+coverage.xml
+*.cover
+.hypothesis/
 
-# Local configuration
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# pyenv
+.python-version
+
+# pipenv
+Pipfile.lock
+
+# PEP 582
+__pypackages__/
+
+# Celery
+celerybeat-schedule
+celerybeat.pid
+
+# SageMath parsed files
+*.sage.py
+
+# Environments
 .env.local
 .env.development.local
 .env.test.local
 .env.production.local
+
+# mypy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pyre type checker
+.pyre/
+
+# Log files
+*.log
+logs/
+translator.log
 
 # OS generated files
 .DS_Store
@@ -74,4 +118,26 @@ logs/
 .Spotlight-V100
 .Trashes
 ehthumbs.db
-Thumbs.db 
+Thumbs.db
+Desktop.ini
+
+# Windows
+[Dd]esktop.ini
+$RECYCLE.BIN/
+*.lnk
+
+# macOS
+.AppleDouble
+.LSOverride
+Icon
+.DocumentRevisions-V100
+.fseventsd
+.TemporaryItems
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# PyInstaller
+*.manifest
+*.spec
+dist/
+build/ 

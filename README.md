@@ -1,142 +1,210 @@
-# Office Document Translator
+# 📄 Office Document Translator
 
-A powerful tool for translating Microsoft Office documents (Excel, Word, PowerPoint) between Japanese, English, and Vietnamese while preserving formatting and structure.
+[![Python](https://img.shields.io/badge/Python-3.7%2B-blue.svg)](https://www.python.org/downloads/)
+[![License](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
+[![Platform](https://img.shields.io/badge/Platform-Windows-lightgrey.svg)](https://www.microsoft.com/windows)
+[![AI](https://img.shields.io/badge/AI-Google%20Gemini-orange.svg)](https://ai.google.dev/)
 
-## Features
+> A powerful, AI-driven tool for translating Microsoft Office documents (Excel, Word, PowerPoint) between Japanese, English, and Vietnamese while perfectly preserving formatting and structure.
 
-- **Multi-format support**: Translate Excel (.xlsx, .xls), Word (.docx, .doc), and PowerPoint (.pptx, .ppt) files
-- **Tri-lingual support**: Translate between Japanese, English, and Vietnamese
-- **Format preservation**: Maintains original document formatting, styles, and layout
-- **Rich progress UI**: Real-time progress tracking with detailed status updates
-- **Batch processing**: Process multiple files in one operation
-- **Smart text detection**: Automatically identifies text that needs translation
-- **Robust error handling**: Recovers from API failures with automatic retries
-- **Dependency management**: Automatically installs required packages
+## 🌟 Features
 
-## Requirements
+### 🔧 Core Capabilities
+- **📊 Multi-format Support**: Excel (.xlsx, .xls), Word (.docx, .doc), PowerPoint (.pptx, .ppt)
+- **🌐 Tri-lingual Translation**: Japanese ↔ English ↔ Vietnamese
+- **🎨 Format Preservation**: Maintains original formatting, styles, layouts, and structures
+- **⚡ Batch Processing**: Process multiple files simultaneously
+- **🤖 Smart Text Detection**: Automatically identifies translatable content
 
-- Python 3.7 or higher
-- Windows OS (for batch file execution)
-- Gemini API key (obtain from [Google AI Studio](https://aistudio.google.com/app/apikey))
+### 🖥️ User Experience
+- **🎯 GUI Interface**: User-friendly graphical interface (`gui_translator.py`)
+- **📊 Real-time Progress**: Live progress tracking with detailed status updates
+- **🔄 Robust Error Handling**: Automatic retries and recovery from API failures
+- **📦 Auto Dependencies**: Automatic package installation and management
 
-## Installation
+### 🛠️ Developer Features
+- **🔨 Build Tools**: Create standalone executables with `build_exe.py`
+- **⚙️ Command Line Interface**: Full CLI support for automation
+- **📝 Comprehensive Logging**: Detailed operation logs for debugging
 
-1. **Clone or download this repository** to your local machine
+## 🚀 Quick Start
 
-2. **Set up your API key:**
-   - Create a `.env` file in the project directory (or run the batch file once to create it)
-   - Add your Gemini API key: `GEMINI_API_KEY=your_api_key_here`
+### Prerequisites
+- **Python 3.7+** ([Download](https://www.python.org/downloads/))
+- **Windows OS** (for batch file execution)
+- **Google Gemini API Key** ([Get yours here](https://aistudio.google.com/app/apikey))
 
-3. **Install dependencies:**
-   Dependencies will be installed automatically when you run the batch file, or you can install them manually:
+### Installation
+
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/rclifen122/Office-Document-Translator.git
+   cd Office-Document-Translator
    ```
+
+2. **Set up API credentials**
+   ```bash
+   # Create .env file
+   echo GEMINI_API_KEY=your_api_key_here > .env
+   ```
+
+3. **Install dependencies**
+   ```bash
    pip install -r translator-requirements.txt
    ```
 
-## Usage
+## 📖 Usage
 
-### Option 1: Using the Batch File (Recommended for Windows)
-
-1. Place your Office documents (Excel, Word, PowerPoint) in the `input` folder
-2. Run `run_translator.bat`
-3. Choose the translation direction:
-   - Option 1: Vietnamese to Japanese
-   - Option 2: Japanese to Vietnamese
-   - Option 3: To English
-4. Wait for the translation to complete
-5. Find your translated documents in the `output` folder
-
-### Option 2: Using Command Line
-
-```
-python translator.py [OPTIONS]
+### 🖱️ GUI Mode (Recommended)
+```bash
+python gui_translator.py
+# or
+scripts\launch_gui.bat
 ```
 
-Options:
-- `--to`: Target language (`ja` for Japanese, `vi` for Vietnamese, `en` for English). Default: `ja`
-- `--file`: Path to a specific file to translate (optional)
-- `--dir`: Path to a directory containing files to translate (optional)
-- `--output-dir`: Path to output directory (optional, default: `./output`)
-- `--version`: Show version information
-
-Examples:
-```
-# Translate all supported files in the input directory to Japanese
+### 🖥️ Command Line Mode
+```bash
+# Basic usage
 python translator.py
 
-# Translate a specific file to Vietnamese
-python translator.py --to vi --file path/to/your/document.xlsx
+# Translate specific file
+python translator.py --file document.xlsx --to ja
 
-# Translate a specific file to English
-python translator.py --to en --file path/to/your/document.xlsx
-
-# Translate all files in a specific directory to Japanese
-python translator.py --to ja --dir path/to/your/folder
-
-# Specify a custom output directory
-python translator.py --output-dir path/to/custom/output
+# Batch translate directory
+python translator.py --dir ./documents --to en --output-dir ./translated
 ```
 
-## Supported Content Types
+### 🔄 Batch Mode (Windows)
+1. 📁 Place documents in the `input/` folder
+2. ▶️ Run `scripts\run_translator.bat`
+3. 🎯 Select translation direction
+4. ✅ Get results in `output/` folder
 
-The translator processes the following content within documents:
+## 🎯 Supported File Types & Content
 
-### Excel Files
-- Cell content
-- Text in shapes
-- WordArt text
-- Text in embedded objects
+| File Type | Extensions | Supported Content |
+|-----------|------------|------------------|
+| **Excel** | `.xlsx`, `.xls` | Cell content, shapes, WordArt, embedded objects |
+| **Word** | `.docx`, `.doc` | Paragraphs, tables, headers/footers, all sections |
+| **PowerPoint** | `.pptx`, `.ppt` | Slide content, shapes, tables, speaker notes |
 
-### PowerPoint Files
-- Text in slides (titles, content)
-- Text in shapes
-- Table content
-- Text in groups
-- Speaker notes
+## ⚙️ Configuration Options
 
-### Word Files
-- Paragraph text
-- Table content
-- Headers and footers
-- Content in all document sections
+### Command Line Arguments
+```bash
+--to LANG          # Target language: ja, en, vi
+--file PATH        # Single file to translate
+--dir PATH         # Directory to process
+--output-dir PATH  # Output directory
+--version          # Show version info
+```
 
-## Troubleshooting
+### Environment Variables
+```bash
+GEMINI_API_KEY=your_key_here  # Required: Your Google Gemini API key
+```
 
-### Missing API Key
-If you see a warning about a missing API key:
-1. Open the `.env` file in the project directory
-2. Replace `your_api_key_here` with your actual Gemini API key
-3. Save the file and run the translator again
+## 🔧 Building Executables
 
-### Installation Errors
-If you encounter errors during package installation:
-1. Ensure you have Python 3.7+ installed and in your PATH
-2. Try installing the packages manually: `pip install -r translator-requirements.txt`
-3. Check if you have administrator permissions if required
+Create standalone executables for distribution:
 
-### File Processing Errors
-If a file fails to translate:
-1. Ensure the file is not open in another application
-2. Verify the file is not password-protected
-3. Confirm the file format is supported (.xlsx, .xls, .docx, .doc, .pptx, .ppt)
+```bash
+python build_exe.py
+```
 
-## How It Works
+This generates:
+- 📦 `dist/OfficeTranslator.exe` - Standalone executable
+- 📁 Complete package with all dependencies
 
-1. The translator scans each document for text content
-2. Text segments are extracted and sent to the Gemini AI API for translation
-3. The translated text is inserted back into the original document
-4. The document is saved with formatting intact in the output directory
+## 🐛 Troubleshooting
 
-## License
+### 🔑 API Key Issues
+```bash
+# Verify your .env file
+cat .env
+# Should show: GEMINI_API_KEY=your_actual_key
+```
 
-This project is provided as-is for educational and practical purposes.
+### 📦 Installation Problems
+```bash
+# Update pip and try again
+pip install --upgrade pip
+pip install -r translator-requirements.txt
+```
 
-## Acknowledgments
+### 📄 File Processing Errors
+- ✅ Ensure files are not open in other applications
+- ✅ Check file is not password-protected
+- ✅ Verify supported file format
+- ✅ Check file permissions
 
-This project is based on [ai-excel-translator](https://github.com/hoangduong92/ai-excel-translator) by [hoangduong92](https://github.com/hoangduong92). The original Excel translation functionality has been extended to support additional file formats (Word, PowerPoint) while maintaining the core translation approach.
+## 🏗️ Project Structure
 
-Special thanks to:
-- **hoangduong92** for creating the original AI-powered Excel translator that inspired this project
-- The original project supports various language pairs and works with different AI providers including Gemini, OpenAI, and Azure
+```
+Office-Document-Translator/
+├── 📄 translator.py              # Core translation engine
+├── 🖥️ gui_translator.py          # GUI interface
+├── 🔨 build_exe.py               # Executable builder
+├── 📋 translator-requirements.txt # Dependencies
+├── 📦 requirements_exe.txt       # Build dependencies
+├── 📁 scripts/                   # Batch files and utilities
+│   ├── ⚙️ run_translator.bat     # Windows batch runner
+│   └── 🚀 launch_gui.bat         # GUI launcher
+├── 📁 docs/                      # Documentation
+│   └── 📖 INSTALLATION.md        # Installation guide
+├── 📁 .github/                   # GitHub configurations
+│   ├── 🔧 workflows/             # CI/CD workflows
+│   └── 📝 ISSUE_TEMPLATE/        # Issue templates
+├── 📁 input/                     # Input documents folder
+├── 📁 output/                    # Translated documents folder
+├── 📚 memory-bank/               # Project documentation
+├── 📄 README.md                  # This file
+├── 🤝 CONTRIBUTING.md            # Contributing guidelines
+├── 🔒 SECURITY.md                # Security policy
+└── 📋 CHANGELOG.md               # Version history
+```
 
-Please respect the license terms of the original project when using, modifying, or distributing this software.
+## 🤝 Contributing
+
+We welcome contributions! Please see our [Contributing Guidelines](CONTRIBUTING.md) for details.
+
+1. 🍴 Fork the repository
+2. 🌿 Create a feature branch
+3. 💻 Make your changes
+4. ✅ Add tests if applicable
+5. 📝 Update documentation
+6. 🚀 Submit a pull request
+
+## 📜 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## 🙏 Acknowledgments
+
+This project builds upon the excellent work of:
+- **[hoangduong92](https://github.com/hoangduong92)** - Original [ai-excel-translator](https://github.com/hoangduong92/ai-excel-translator)
+- **Google AI** - Gemini API for translation services
+- **Microsoft** - Office document format specifications
+
+## 📊 Version History
+
+| Version | Date | Changes |
+|---------|------|---------|
+| 2.0.0 | 2024-05 | Added GUI, multi-format support, build tools |
+| 1.0.0 | 2024-04 | Initial release with Excel support |
+
+## 🆘 Support
+
+- 📧 **Issues**: [GitHub Issues](https://github.com/rclifen122/Office-Document-Translator/issues)
+- 💬 **Discussions**: [GitHub Discussions](https://github.com/rclifen122/Office-Document-Translator/discussions)
+- 📖 **Documentation**: [Project Wiki](https://github.com/rclifen122/Office-Document-Translator/wiki)
+
+---
+
+<div align="center">
+
+**⭐ Star this repository if you find it useful! ⭐**
+
+Made with ❤️ for the global translation community
+
+</div>
