@@ -34,6 +34,7 @@ translator-env/
 # IDE files
 .idea/
 .vscode/
+.cursor/
 *.swp
 *.swo
 .project
@@ -140,4 +141,12 @@ Icon
 *.manifest
 *.spec
 dist/
-build/ 
+build/
+
+# Project-specific folders to ignore
+Done/
+memory-bank/
+
+# Project-specific folders
+Done/
+memory-bank/ 

@@ -157,7 +157,6 @@ Office-Document-Translator/
 │   └── 📝 ISSUE_TEMPLATE/        # Issue templates
 ├── 📁 input/                     # Input documents folder
 ├── 📁 output/                    # Translated documents folder
-├── 📚 memory-bank/               # Project documentation
 ├── 📄 README.md                  # This file
 ├── 🤝 CONTRIBUTING.md            # Contributing guidelines
 ├── 🔒 SECURITY.md                # Security policy
